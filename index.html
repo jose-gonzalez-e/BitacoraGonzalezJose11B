@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitácora Tics José González 11 B</title>
+    <link rel="icon" type="image/png" href="Recursos/img/LOGO_CAPOUILLIEZ - Isotipos (2)-08.png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            background-color: #f0f4f8;
+            font-family: 'Roboto', sans-serif;
+            color: #2c3e50;
+        }
+
+        /* --- HEADER --- */
+        header {
+            padding: 20px;
+            background-color: rgb(28, 74, 106);
+        }
+        h1 {
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 5px #00008b, 0 0 10px #00008b, 0 0 20px #0000ff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        /* --- CONTENIDO PRINCIPAL --- */
+        main {
+            flex: 1;
+            padding: 40px 20px; 
+            max-width: 1200px;
+            margin: 0 auto;
+            border-left: 5px solid rgb(28, 74, 106); 
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); 
+        }
+        h4 {
+            color: rgb(28, 74, 106);
+            border-bottom: 1px solid rgba(28, 74, 106, 0.3);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* --- TARJETAS (SEMANAS) --- */
+        .semana {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(144, 164, 174, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px auto;
+            width: 90%;
+            max-height: 150px; 
+            overflow: hidden;
+            text-align: left;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .semana.abierta {
+            max-height: 2000px; 
+            width: 100%;
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.98); 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+            border-color: rgb(28, 74, 106);
+        }
+
+        .semana h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: rgb(28, 74, 106);
+            margin: 0;
+            width: 100%;
+            border-bottom: 2px solid rgba(28, 74, 106, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .semana p {
+            color: #546e7a;
+            line-height: 1.6;
+            margin: 15px 0;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        /* Efecto de desvanecido inferior cuando está cerrada */
+        .semana::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.9));
+            transition: opacity 0.3s;
+        }
+        .semana.abierta::after { opacity: 0; }
+
+        /* --- VISOR PDF --- */
+        .contenedor-visor {
+            width: 100%;
+            margin-top: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+        }
+        /* Bloqueamos interacción cuando está cerrada para que el clic abra la tarjeta */
+        .semana:not(.abierta) .contenedor-visor {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        /* Permitimos scroll solo cuando está abierta */
+        .semana.abierta .contenedor-visor {
+            pointer-events: auto;
+            opacity: 1;
+        }
+
+        /* --- IMÁGENES --- */
+        .imagen-semana {
+            width: 250px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .imagen-semana:hover { transform: scale(1.05); }
+
+        /* --- FOOTER --- */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #576d82; 
+            color: #eceff1;
+            border-top: 2px solid #90a4ae;
+            box-shadow: 0 -2px 10px rgba(169, 194, 230, 0.4);
+        }
+        footer span { font-weight: 300; letter-spacing: 1px; }
+        footer img { 
+            transition: transform 0.3s ease; 
+            cursor: pointer; 
+            filter: brightness(0.9);
+        }
+        footer img:hover { transform: scale(1.15); }
+
+        @media(max-width:786px){
+            footer { flex-direction: column; gap: 15px; }
+            .semana { flex-direction: column; }
+            .imagen-semana { width: 100%; max-width: 300px; }
+        }
+
+        .contenedor-video {
+    margin-top: 15px;
+    width: 100%;
+    max-width: 1000px; /* Evita que el video sea demasiado grande */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.video-semana {
+    width: 100%;
+    display: block;
+}
+
+/* Al igual que con el PDF, evitamos que el video bloquee el clic cuando la tarjeta está cerrada */
+.semana:not(.abierta) .contenedor-video {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.semana.abierta .contenedor-video {
+    pointer-events: auto;
+    opacity: 1;
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Bitácora de Página WEB</h1>
+    </header>
+
+    <main>
+        <h4>Bitácora semana por semana de esta página web y sus modificaciones.</h4>
+
+        <div class="semana">
+            <div class="contenido-texto">
+                <h2>Semana 1: Introducción a HTML</h2>
+                <p>En esta clase, aprendimos sobre las bases de Arduino como producto y empresa.</p>
+            </div>
+            <div class="contenedor-visor">
+                <object 
+                    data="Recursos/Introducción Arduino José González 11B.pdf#toolbar=1&navpanes=0&scrollbar=1" 
+                    type="application/pdf" 
+                    width="100%" 
+                    height="500px">
+                </object>
+            </div>
+        </div>
+
+<div class="semana">
+    <div class="contenido-texto">
+        <h2>Semana 2: Introducción a Robótica</h2>
+        <p>Aprendemos a utilizar los componentes del kit de robótica por medio de Tinkercad.</p>
+        
+        <!-- Contenedor del video -->
+        <div class="contenedor-video">
+            <video controls class="video-semana">
+                <source src="Recursos/Tinkercad LED RGB.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+            </video>
+        </div>
+    </div>
+</div>
+
+        <h4>"Mereces lo que sueñas" - Gustavo Cerati</h4>
+    </main>
+
+    <footer>
+        <span>© 2026 @Jsp.Is.a.Rocker</span>
+        <img src="https://www.capouilliez.edu.gt/assets/img/logo.png" alt="Logo Colegio" width="200px">
+    </footer>
+
+    <script>
+        document.querySelectorAll('.semana').forEach(tarjeta => {
+            tarjeta.addEventListener('click', (e) => {
+                // Si la tarjeta está abierta y el clic es en el PDF, permitimos el scroll del PDF
+                if (tarjeta.classList.contains('abierta') && e.target.closest('object')) {
+                    return; 
+                }
+                // En cualquier otro caso, alternamos apertura
+                tarjeta.classList.toggle('abierta');
+            });
+        });
+    </script>
+</body>
+</html>
