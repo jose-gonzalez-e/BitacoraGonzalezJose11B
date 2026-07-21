@@ -20,7 +20,18 @@
             font-family: 'Roboto', sans-serif;
             color: #2c3e50;
         }
-body { display: flex; flex-direction: column; min-height: 100vh; /* CAPA 1: Imagen de fondo dentro de la carpeta "prueba" */ background-image: url('Recursos/img/fondo.jpg'); background-size: cover; background-position: center;background-attachment: fixed; position: relative; }
+        body { 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+            /* CAPA 1: Imagen de fondo dentro de la carpeta "prueba" */ 
+            background-image: url('Recursos/img/fondo.jpg'); 
+            background-size: cover; 
+            background-position: center;
+            background-attachment: fixed; 
+            position: relative; 
+        }
+
         /* --- HEADER --- */
         header {
             padding: 20px;
@@ -42,7 +53,9 @@ body { display: flex; flex-direction: column; min-height: 100vh; /* CAPA 1: Imag
             max-width: 1200px;
             margin: 0 auto;
             border-left: 5px solid rgb(28, 74, 106); 
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); 
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); 
+            background-color: #ffffff; /* FONDO BLANCO AÑADIDO PARA CUBRIR EL ÁREA DE LAS TARJETAS */
+            border-radius: 8px;
         }
         h4 {
             color: rgb(28, 74, 106);
@@ -167,29 +180,29 @@ body { display: flex; flex-direction: column; min-height: 100vh; /* CAPA 1: Imag
         }
 
         .contenedor-video {
-    margin-top: 15px;
-    width: 100%;
-    max-width: 1000px; /* Evita que el video sea demasiado grande */
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
+            margin-top: 15px;
+            width: 100%;
+            max-width: 1000px; /* Evita que el video sea demasiado grande */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
 
-.video-semana {
-    width: 100%;
-    display: block;
-}
+        .video-semana {
+            width: 100%;
+            display: block;
+        }
 
-/* Al igual que con el PDF, evitamos que el video bloquee el clic cuando la tarjeta está cerrada */
-.semana:not(.abierta) .contenedor-video {
-    pointer-events: none;
-    opacity: 0.7;
-}
+        /* Al igual que con el PDF, evitamos que el video bloquee el clic cuando la tarjeta está cerrada */
+        .semana:not(.abierta) .contenedor-video {
+            pointer-events: none;
+            opacity: 0.7;
+        }
 
-.semana.abierta .contenedor-video {
-    pointer-events: auto;
-    opacity: 1;
-}
+        .semana.abierta .contenedor-video {
+            pointer-events: auto;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -216,83 +229,81 @@ body { display: flex; flex-direction: column; min-height: 100vh; /* CAPA 1: Imag
             </div>
         </div>
 
-<div class="semana">
-    <div class="contenido-texto">
-        <h2>Semana 2: Introducción a Robótica</h2>
-        <p>Aprendemos a utilizar los componentes del kit de robótica por medio de Tinkercad.</p>
-        
-        <!-- Contenedor del video -->
-        <div class="contenedor-video">
-            <video controls class="video-semana">
-                <source src="arduinoweek2" type="video/mp4">
-                Tu navegador no soporta la reproducción de video.
-            </video>
+        <div class="semana">
+            <div class="contenido-texto">
+                <h2>Semana 2: Introducción a Robótica</h2>
+                <p>Aprendemos a utilizar los componentes del kit de robótica por medio de Tinkercad.</p>
+                
+                <!-- Contenedor del video -->
+                <div class="contenedor-video">
+                    <video controls class="video-semana">
+                        <source src="arduinoweek2" type="video/mp4">
+                        Tu navegador no soporta la reproducción de video.
+                    </video>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-
-
-<div class="semana">
-    <div class="contenido-texto">
-        <h2>Semana 3: Primer circuito</h2>
-        <p>Logramos hacer que una luz LED regular y una RGB encendieran de manera alternada y con distintos colores.</p>
-        
-        <!-- Contenedor del video -->
-        <div class="contenedor-video">
-            <video controls class="video-semana">
-                <source src="week3.mp4" type="video/mp4">
-                Tu navegador no soporta la reproducción de video.
-            </video>
-        </div>
-    </div>
-</div>
 
         <div class="semana">
-    <div class="contenido-texto">
-        <h2>Semana 4: Circuito 2: Tres luces LED</h2>
-        <p>Encendimos luces LED de manera alternada.</p>
-        
-        <!-- Contenedor del video -->
-        <div class="contenedor-video">
-            <video controls class="video-semana">
-                <source src="week4.mp4" type="video/mp4">
-                Tu navegador no soporta la reproducción de video.
-            </video>
+            <div class="contenido-texto">
+                <h2>Semana 3: Primer circuito</h2>
+                <p>Logramos hacer que una luz LED regular y una RGB encendieran de manera alternada y con distintos colores.</p>
+                
+                <!-- Contenedor del video -->
+                <div class="contenedor-video">
+                    <video controls class="video-semana">
+                        <source src="week3.mp4" type="video/mp4">
+                        Tu navegador no soporta la reproducción de video.
+                    </video>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-  <div class="semana">
-    <div class="contenido-texto">
-        <h2>Semana 5: Circuito 3: Semáforo</h2>
-        <p>Encendimos luces LED con un intervalo similar al de un semáforo.</p>
-        
-        <!-- Contenedor del video -->
-        <div class="contenedor-video">
-            <video controls class="video-semana">
-                <source src="week5.mp4" type="video/mp4">
-                Tu navegador no soporta la reproducción de video.
-            </video>
+        <div class="semana">
+            <div class="contenido-texto">
+                <h2>Semana 4: Circuito 2: Tres luces LED</h2>
+                <p>Encendimos luces LED de manera alternada.</p>
+                
+                <!-- Contenedor del video -->
+                <div class="contenedor-video">
+                    <video controls class="video-semana">
+                        <source src="week4.mp4" type="video/mp4">
+                        Tu navegador no soporta la reproducción de video.
+                    </video>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-  <div class="semana">
-    <div class="contenido-texto">
-        <h2>Semana 6: Circuito 4: Ultrasónico</h2>
-        <p>Aprendimos a usar un sensor ultrasónico y a programarlo.</p>
-        
-        <!-- Contenedor del video -->
-        <div class="contenedor-video">
-            <video controls class="video-semana">
-                <source src="week66.mp4" type="video/mp4">
-                Tu navegador no soporta la reproducción de video.
-            </video>
+        <div class="semana">
+            <div class="contenido-texto">
+                <h2>Semana 5: Circuito 3: Semáforo</h2>
+                <p>Encendimos luces LED con un intervalo similar al de un semáforo.</p>
+                
+                <!-- Contenedor del video -->
+                <div class="contenedor-video">
+                    <video controls class="video-semana">
+                        <source src="week5.mp4" type="video/mp4">
+                        Tu navegador no soporta la reproducción de video.
+                    </video>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-        
+        <div class="semana">
+            <div class="contenido-texto">
+                <h2>Semana 6: Circuito 4: Ultrasónico</h2>
+                <p>Aprendimos a usar un sensor ultrasónico y a programarlo.</p>
+                
+                <!-- Contenedor del video -->
+                <div class="contenedor-video">
+                    <video controls class="video-semana">
+                        <source src="week66.mp4" type="video/mp4">
+                        Tu navegador no soporta la reproducción de video.
+                    </video>
+                </div>
+            </div>
+        </div>
+
         <h4>"Mereces lo que sueñas" - Gustavo Cerati</h4>
     </main>
 
